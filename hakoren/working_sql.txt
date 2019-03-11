@@ -1,0 +1,451 @@
+﻿-manually table
+car_vendor, car_shop, credit_card, users_category, simpleform_status, car_type_category
+reservation, flight_lines, booking_status,
+
+--database
+  delete category_id in users table
+  ALTER TABLE `hakoren`.`users` DROP COLUMN `category_id`; 
+  
+
+  create  users_category  table
+  CREATE TABLE `hakoren`.`user_category`( `id` INT(3), `name` VARCHAR(30), `alias` VARCHAR(30) ); 
+  INSERT INTO `hakoren`.`users_category` (`name`, `alias`) VALUES ('individual', 'individual'); 
+  INSERT INTO `hakoren`.`users_category` (`name`, `alias`) VALUES ('corporate', 'corporate'); 
+  INSERT INTO `hakoren`.`users_category` (`name`, `alias`) VALUES ('foreigner', 'foreigner'); 
+
+
+  create  users_group  table
+  CREATE TABLE `hakoren`.`users_tag`( `id` INT(10) NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `alias` VARCHAR(50), PRIMARY KEY (`id`) ); 
+
+  add category_id field  in profiles table
+  ALTER TABLE `hakoren`.`profiles` ADD COLUMN `category_id` INT(3) NULL AFTER `updated_at`; 
+  ALTER TABLE `hakoren`.`profiles` 
+        ADD COLUMN `fur_first_name` VARCHAR(191) NULL AFTER `user_id`, 
+        ADD COLUMN `fur_last_name` VARCHAR(191) NULL AFTER `fur_first_name`, 
+        ADD COLUMN `phone` VARCHAR(50) NULL AFTER `category_id`, 
+        ADD COLUMN `postal_code` VARCHAR(50) NULL AFTER `phone`, 
+        ADD COLUMN `prefecture` VARCHAR(200) NULL AFTER `postal_code`, 
+        ADD COLUMN `city` VARCHAR(100) NULL AFTER `prefecture`, 
+        ADD COLUMN `address1` VARCHAR(250) NULL AFTER `city`, 
+        ADD COLUMN `address2` VARCHAR(250) NULL AFTER `address1`, 
+        ADD COLUMN `emergency_phone` VARCHAR(50) NULL AFTER `address2`, 
+        ADD COLUMN `state` VARCHAR(50) NULL AFTER `emergency_phone`, 
+        ADD COLUMN `country` VARCHAR(50) NULL AFTER `state`, 
+        ADD COLUMN `zip_code` VARCHAR(50) NULL AFTER `country`, 
+        ADD COLUMN `company_name` VARCHAR(100) NULL AFTER `zip_code`, 
+        ADD COLUMN `company_postal_code` VARCHAR(50) NULL AFTER `company_name`, 
+        ADD COLUMN `company_prefecture` VARCHAR(100) NULL AFTER `company_postal_code`, 
+        ADD COLUMN `company_address1` VARCHAR(250) NULL AFTER `company_prefecture`, 
+        ADD COLUMN `company_city` VARCHAR(100) NULL AFTER `company_address1`, 
+        ADD COLUMN `company_address2` VARCHAR(250) NULL AFTER `company_city`, 
+        ADD COLUMN `credit_card_type` INT(2) NULL AFTER `company_address2`, 
+        ADD COLUMN `credit_card_number` VARCHAR(100) NULL AFTER `credit_card_type`, 
+        ADD COLUMN `credit_card_expiration` TIMESTAMP NULL AFTER `credit_card_number`, 
+        ADD COLUMN `credit_card_code` VARCHAR(50) NULL AFTER `credit_card_expiration`; 
+
+ALTER TABLE `hakoren`.`profiles` ADD COLUMN `sex` TINYINT(3) NULL AFTER `fur_last_name`, 
+                                 ADD COLUMN `birth` TIMESTAMP NULL AFTER `sex`; 
+
+ALTER TABLE `hakoren`.`profiles` ADD COLUMN `foreign_address` VARCHAR(250) NULL AFTER `emergency_phone`, 
+                                 ADD COLUMN `foreign_city` VARCHAR(100) NULL AFTER `foreign_address`,
+                                 CHANGE `state` `foreign_state` VARCHAR(50) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci NULL, 
+                                 CHANGE `country` `foreign_country` VARCHAR(50) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci NULL, 
+                                 CHANGE `zip_code` `foreign_zip_code` VARCHAR(50) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci NULL, 
+                                 CHANGE `company_name` `company_name` VARCHAR(100) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `foreign_zip_code`; 
+  
+
+  
+  create users_group_tag table
+  CREATE TABLE `hakoren`.`users_group_tag`( `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `user_id` INT(10) UNSIGNED NOT NULL, `group_id` INT(10) UNSIGNED NOT NULL, `created_at` TIMESTAMP, `updatd_at` TIMESTAMP, PRIMARY KEY (`id`) ); 
+
+
+  create credit_card table
+  CREATE TABLE `hakoren`.`credit_card`( `id` INT(3), `name` VARCHAR(30), `alias` VARCHAR(30) ); 
+  ALTER TABLE `hakoren`.`credit_card` CHANGE `id` `id` INT(3) NOT NULL AUTO_INCREMENT, ADD PRIMARY KEY (`id`); 
+  INSERT INTO `hakoren`.`credit_card` (`name`, `alias`) VALUES ('visa', 'Visa'); 
+  INSERT INTO `hakoren`.`credit_card` (`name`, `alias`) VALUES ('mastercard', 'Mastercard'); 
+
+----------2018/02/03----------
+  create car_option , car_option_model, car_option_shop  table
+------2018/02/05-----
+  car_shop, car_model table  
+-----2018/02/06---
+  update car_model, create car_vendor table
+---2018/02/07
+  create car_class table, create car_class_model table
+---2018/02/08
+  create car_model_thumb, delete smoking filed in car_model table, create car_equip
+---2018/02/09
+  update car_shop table
+---2018/02/10
+  create  shop_working_times, shop_working_times_spec  table
+---2018/03/10
+  ALTER TABLE `hakoren`.`bookings` ADD COLUMN `class_id` INT(10) UNSIGNED NULL AFTER `inventory_id`, ADD COLUMN `model_id` INT(10) UNSIGNED NULL AFTER `class_id`; 
+---2018/03/15
+CREATE TABLE `portal_site`( `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `alias` VARCHAR(50), PRIMARY KEY (`id`) ); 
+ALTER TABLE `portal_site` ADD COLUMN `created_at` TIMESTAMP NULL AFTER `alias`, ADD COLUMN `updated_at` TIMESTAMP NULL AFTER `created_at`; 
+ALTER TABLE `bookings` ADD COLUMN `portal_flag` TINYINT(2) UNSIGNED NULL COMMENT '1=portal, 0 = local' AFTER `user_trans_id`, ADD COLUMN `portal_id` INT(10) UNSIGNED NULL AFTER `portal_flag`;    
+---2018/03/16/
+ALTER TABLE `bookings` CHANGE `flight_number` `flight_number` VARCHAR(30) NULL; 
+ALTER TABLE `bookings` ADD COLUMN `paid_options_price` VARCHAR(255) NULL COMMENT 'selected options price' AFTER `paid_options`; 
+ALTER TABLE `bookings` ADD COLUMN `portal_info` TEXT NULL COMMENT 'portal information' AFTER `portal_id`; 
+--2018/03/17
+ALTER TABLE `bookings` ADD COLUMN `insurance1` INT(10) UNSIGNED NULL AFTER `option_price`, ADD COLUMN `insurance2` INT(10) UNSIGNED NULL AFTER `insurance1`; 
+--2018/03/20
+ALTER TABLE `car_option` ADD COLUMN `google_column_number` TINYINT(3) UNSIGNED DEFAULT 0 NOT NULL COMMENT 'google sheet column number' AFTER `charge_system`; 
+ALTER TABLE `bookings` ADD COLUMN `basic_price` INT(10) UNSIGNED DEFAULT 0 NOT NULL COMMENT 'basic price' AFTER `class_id`; 
+--2018/03/23
+ALTER TABLE `car_class_model` ADD COLUMN `priority` SMALLINT(5) DEFAULT 0 NULL AFTER `model_id`;
+---2018/03/24
+ALTER TABLE `bookings` ADD COLUMN `web_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `portal_info`, ADD COLUMN `wait_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `web_status`, ADD COLUMN `explain_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `wait_status`, ADD COLUMN `pay_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `explain_status`, ADD COLUMN `com_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `pay_status`, ADD COLUMN `other_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `com_status`; 
+
+CREATE TABLE IF NOT EXISTS `blog_posts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publish_date` date DEFAULT NULL,
+  `featured_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `post_content` text COLLATE utf8mb4_unicode_ci,
+  `meta_description` text COLLATE utf8mb4_unicode_ci,
+  `og_tags` text COLLATE utf8mb4_unicode_ci,
+  `shop_category_id` int(11) DEFAULT NULL,
+  `post_tag_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `activations_user_id_index` (`title`(191))
+);
+
+-- --------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `blog_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `activations_user_id_index` (`title`(191))
+);
+
+-- --------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `post_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `activations_user_id_index` (`title`(191))
+) ;
+
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop_categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `activations_user_id_index` (`title`(191))
+);
+----
+CREATE TABLE IF NOT EXISTS `post_tags_rel` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `blog_tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+); 
+---2018/03/26
+ALTER TABLE `bookings` ADD COLUMN `pay_position` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT '1 = web payment, 2 = shop payment' AFTER `pay_id`; 
+
+---2018/03/27
+ALTER TABLE `bookings` ADD COLUMN `return_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `other_status`, ADD COLUMN `clean_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `return_status`, ADD COLUMN `wash_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `clean_status`, ADD COLUMN `end_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `wash_status`, ADD COLUMN `depart_task` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT '0=booking, 1=completed' AFTER `end_status`, ADD COLUMN `return_task` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT '0=returning, 1= completed' AFTER `depart_task`, CHANGE `created_at` `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL AFTER `return_task`; 
+---2018/03/27
+CREATE TABLE `car_passenger_tags`( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(20) NOT NULL, `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, `deleted_at` TIMESTAMP, PRIMARY KEY (`id`) ) CHARSET=utf8 COLLATE=utf8_general_ci; 
+CREATE TABLE `car_class_passenger`( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, `class_id` INT NOT NULL, `passenger_tag` INT, `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, `deleted_at` TIMESTAMP, KEY(`id`) ) CHARSET=utf8 COLLATE=utf8_general_ci; 
+ALTER TABLE  `car_passenger_tags` ADD COLUMN `min_passenger` TINYINT NULL AFTER `name`, ADD COLUMN `max_passenger` TINYINT NULL AFTER `min_passenger`; 
+
+INSERT INTO `car_passenger_tags` (`name`, `min_passenger`, `max_passenger`) VALUES ('4人乗り', '4', '4'); 
+INSERT INTO `car_passenger_tags` (`name`, `min_passenger`, `max_passenger`) VALUES ('5人乗り', '5', '5'); 
+INSERT INTO `car_passenger_tags` (`name`, `min_passenger`, `max_passenger`) VALUES ('7~8人乗り', '7', '8'); 
+INSERT INTO `car_passenger_tags` (`name`, `min_passenger`, `max_passenger`) VALUES ('10人乗り', '10', '10'); 
+INSERT INTO `car_passenger_tags` (`name`, `min_passenger`, `max_passenger`) VALUES ('26~29人乗り', '26', '29');
+
+ALTER TABLE `car_class_passenger` DROP COLUMN `deleted_at`;
+ALTER TABLE `bookings` ADD COLUMN `mile_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `clean_status`; 
+ALTER TABLE `bookings` ADD COLUMN `miles` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `mile_status`; 
+--2018/03/28
+==sin
+ALTER TABLE `bookings` ADD COLUMN `paid_option_numbers` VARCHAR(255) NULL AFTER `paid_options`;
+==Mahesh
+ALTER TABLE `blog_posts` ADD `post_views` INT(11) NOT NULL DEFAULT '1' AFTER `post_tag_id`;
+ALTER TABLE `blog_tags` ADD `is_popular_tag` TINYINT NOT NULL DEFAULT '0' AFTER `slug`; 
+---2018/04/02
+===Mahesh
+ALTER TABLE `bookings` ADD `drivers` TINYINT(4) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Number of drivers' AFTER `passengers`, ADD `representative_license_surface` VARCHAR(255) NULL DEFAULT NULL AFTER `drivers`, ADD `representative_license_back` VARCHAR(255) NULL DEFAULT NULL AFTER `representative_license_surface`;
+---2018/04/03
+==Sin
+ALTER TABLE `hakoren`.`users_group_tag` CHANGE `created_at` `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL;
+==my
+CREATE TABLE `car_class_thumb` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `thumb_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `class_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+);
+ALTER TABLE `car_class` ADD COLUMN `staff_comment` TEXT NULL AFTER `description`; 
+==Mehesh
+ALTER TABLE `bookings` ADD `agree_about_business_hours` TINYINT(1) NOT NULL DEFAULT '0' AFTER `representative_license_back`, ADD `agree_things_to_bring` TINYINT(1) NOT NULL DEFAULT '0' AFTER `agree_about_business_hours`, ADD `agree_about_accident_happen` TINYINT(1) NOT NULL DEFAULT '0' AFTER `agree_things_to_bring`, ADD `agree_about_insurance_rental` TINYINT(1) NOT NULL DEFAULT '0' AFTER `agree_about_accident_happen`, ADD `agree_disclaimer_compensation_system` TINYINT(1) NOT NULL DEFAULT '0' AFTER `agree_about_insurance_rental`, ADD `agree_condition_vehicle_compensation` TINYINT(1) NOT NULL DEFAULT '0' AFTER `agree_disclaimer_compensation_system`, ADD `agree_condition_car_insurance` TINYINT(1) NOT NULL DEFAULT '0' AFTER `agree_condition_vehicle_compensation`;
+--2018/04/04
+==my
+CREATE TABLE `car_option_thumb` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `thumb_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `option_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+);
+==sin
+CREATE TABLE `car_pickup`( `shop_id` INT NOT NULL, `thumb_path` VARCHAR(255), `title1` VARCHAR(255), `content1` TEXT, `title2` VARCHAR(255), `content2` TEXT ) CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--2018/0406
+==Mehesh
+ALTER TABLE `bookings`
+  DROP `agree_about_business_hours`,
+  DROP `agree_things_to_bring`,
+  DROP `agree_about_accident_happen`,
+  DROP `agree_about_insurance_rental`,
+  DROP `agree_disclaimer_compensation_system`,
+  DROP `agree_condition_vehicle_compensation`;
+
+
+ALTER TABLE `bookings` CHANGE `agree_condition_car_insurance` `agree_terms_conditions` TINYINT(1) NOT NULL DEFAULT '0';  
+--2018/04/07
+==Mehesh
+ALTER TABLE `bookings`
+  DROP `representative_license_surface`,
+  DROP `representative_license_back`;
+
+
+CREATE TABLE IF NOT EXISTS `bookings_driver_licences` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `booking_id` varchar(20) NOT NULL,
+  `representative_license_surface` varchar(255) DEFAULT NULL,
+  `representative_license_back` varchar(255) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`,`booking_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+==my
+ALTER TABLE `car_inventory` ADD COLUMN `delete_flag` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT 'delete flag' AFTER `status`; 
+--2018/04/12
+==Mahesh
+ALTER TABLE `blog_posts` CHANGE `shop_category_id` `shop_id` INT(11) NULL DEFAULT NULL;
+DROP TABLE shop_categories;
+UPDATE `car_shop` SET `slug` = 'fukuoka' WHERE `car_shop`.`id` = 4;
+UPDATE `car_shop` SET `slug` = 'naha-airport' WHERE `car_shop`.`id` = 5;
+
+--2018/04/13
+==Mahesh
+ALTER TABLE `bookings` ADD `bag_choosed` TINYINT(1) NOT NULL DEFAULT '0' AFTER `rent_days`;
+==my
+ALTER TABLE `bookings` ADD COLUMN `shop_pay_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT 'shop paid status' AFTER `pay_status`; 
+ALTER TABLE `car_option` ADD COLUMN `type` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT '0=paid option, 1=free option' AFTER `google_column_number`; 
+==sin
+ALTER TABLE `mail_templates` DROP COLUMN `title`, DROP COLUMN `greeting`, CHANGE `cat_id` `cat_id` VARCHAR(30) CHARSET utf8 COLLATE utf8_unicode_ci NULL, CHANGE `mailname` `mailname` VARCHAR(50) CHARSET utf8 COLLATE utf8_unicode_ci NULL, ADD COLUMN `sender` VARCHAR(100) CHARSET utf8 COLLATE utf8_unicode_ci NULL AFTER `mailname`, ADD COLUMN `subject` VARCHAR(255) NULL AFTER `sender`, CHANGE `message` `content` TEXT CHARSET utf8 COLLATE utf8_unicode_ci NULL; 
+ALTER TABLE `mail_templates` CHANGE `subject` `subject` VARCHAR(255) CHARSET utf8 COLLATE utf8_unicode_ci NULL;
+
+--2018/04/24
+==Sin
+ALTER TABLE `car_option` ADD COLUMN `max_number` TINYINT(1) UNSIGNED DEFAULT 1 NOT NULL AFTER `type`;
+--2018/04/25
+==sin
+ALTER TABLE `car_option` ADD COLUMN `order` SMALLINT DEFAULT 0 NULL AFTER `id`;
+UPDATE `car_option` SET `order` = '1' WHERE `id` = '10'; 
+UPDATE `car_option` SET `order` = '2' WHERE `id` = '6'; 
+UPDATE `car_option` SET `order` = '3' WHERE `id` = '15'; 
+UPDATE `car_option` SET `order` = '4' WHERE `id` = '17'; 
+UPDATE `car_option` SET `order` = '5' WHERE `id` = '18';
+--2018/04/27
+ ==my
+ ALTER TABLE `bookings` DROP COLUMN `payment_status`; 
+ ==sin
+ ALTER TABLE `car_equip` ADD COLUMN `thumbnail` VARCHAR(255) NULL AFTER `name`;
+ --2018/04/30
+ ==sin
+ CREATE TABLE `car_class_suggests`( `id` INT(10) UNSIGNED AUTO_INCREMENT, `class_id` INT NOT NULL, `suggest_class_id` INT NOT NULL, KEY(`id`) ) CHARSET=utf8 COLLATE=utf8_unicode_ci;
+ --2018/05/04
+ ==sin
+ CREATE TABLE `admin_shop`( `admin_id` INT, `shop_id` INT ) CHARSET=utf8 COLLATE=utf8_unicode_ci;
+ 
+ ==me
+ ALTER TABLE `bookings` ADD COLUMN `extend_day` TINYINT(3) NOT NULL AFTER `return_task`, ADD COLUMN `extend_return_date` DATETIME NULL AFTER `extend_day`, ADD COLUMN `extend_basic_price` INT(10) NOT NULL AFTER `extend_return_date`, ADD COLUMN `extend_insurance1` INT(10) NOT NULL AFTER `extend_basic_price`, ADD COLUMN `extend_insurance2` INT(10) NOT NULL AFTER `extend_insurance1`, ADD COLUMN `extend_payment` INT(10) NOT NULL AFTER `extend_insurance2`, ADD COLUMN `extend_pay_status` TINYINT(2) DEFAULT 0 NOT NULL AFTER `extend_payment`; 
+ --2018/5/5/5
+ ==mahesh
+ ALTER TABLE `profiles` ADD `license_surface` VARCHAR(255) NULL DEFAULT NULL AFTER `avatar`, ADD `license_back` VARCHAR(255) NULL DEFAULT NULL AFTER `license_surface`;
+ ==moto
+ ALTER TABLE `car_class` ADD `car_shop_name` VARCHAR(255) NULL AFTER `thumb_path`;
+--2018/05/07
+==me 
+ ALTER TABLE `bookings` ADD COLUMN `web_payment` INT(10) UNSIGNED DEFAULT 0 NULL COMMENT 'web_payment' AFTER `payment`; 
+ ALTER TABLE `bookings` ADD COLUMN `submited_at` DATETIME NULL AFTER `created_at`; 
+ --2018/05/08
+ ==me
+ ALTER TABLE `bookings` ADD COLUMN `extend_options_id` VARCHAR(255) NULL AFTER `extend_insurance2`, ADD COLUMN `extend_options_number` VARCHAR(255) NULL AFTER `extend_options_id`, ADD COLUMN `extend_options_price` VARCHAR(255) NULL AFTER `extend_options_number`, ADD COLUMN `extend_option_price` INT(10) UNSIGNED NULL AFTER `extend_options_price`; 
+--2018/05/09
+==Mahash
+ALTER TABLE `bookings` ADD `card_last4` VARCHAR(20) NULL DEFAULT NULL AFTER `trans_id`, ADD `card_brand` VARCHAR(20) NULL DEFAULT NULL AFTER `card_last4`;
+==kokoro
+ALTER TABLE `car_shop` ADD `comment` TEXT NULL AFTER `address2`;
+--2018/05/100
+==mahesh
+ALTER TABLE `users` ADD `password_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `admin_ip_address`;
+--2018/05/11
+==Sin
+ALTER TABLE `car_class` ADD COLUMN `static_flag` TINYINT DEFAULT 0 NULL AFTER `status`;
+--2018/05/15
+==Sin
+ALTER TABLE `portal_site` ADD COLUMN `show_flag` TINYINT DEFAULT 1 NOT NULL AFTER `alias`;
+--2018/05/16
+==my 
+ALTER TABLE `bookings` ADD COLUMN `extend_pay_method` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `extend_pay_status`; 
+==my
+DROP TABLE IF EXISTS `bookings_price`;
+CREATE TABLE `bookings_price` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `book_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `type` enum('add','extend') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `insurance1` int(10) unsigned NOT NULL DEFAULT 0,
+  `insurance2` int(10) NOT NULL DEFAULT 0,
+  `paid_options` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paid_options_number` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paid_options_price` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adjustment_price` int(10) NOT NULL DEFAULT 0,
+  `total_price` int(10) unsigned NOT NULL DEFAULT 0,
+  `pay_method` tinyint(2) DEFAULT NULL,
+  `pay_status` tinyint(2) unsigned NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+);
+==my
+ALTER TABLE `bookings` ADD COLUMN `request_smoke` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `passengers`; 
+--2018/0518
+==my 
+ALTER TABLE `car_shop` ADD COLUMN `shop_number` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `pickup`; 
+ALTER TABLE `bookings` CHANGE `discount` `discount` INT(10) DEFAULT 0 NOT NULL; 
+--2018/05/19
+ALTER TABLE `car_class` ADD COLUMN `delete_flag` TINYINT(2) DEFAULT 0 NOT NULL COMMENT 'normal=0, delete=1' AFTER `static_flag`; 
+ALTER TABLE `car_model` ADD COLUMN `delete_flag` TINYINT DEFAULT 0 NOT NULL COMMENT 'normal=0, delete=1' AFTER `selected_by_class`; 
+ALTER TABLE `car_option` ADD COLUMN `delete_flag` TINYINT DEFAULT 0 NOT NULL AFTER `max_number`; 
+ALTER TABLE `car_shop` ADD COLUMN `delete_flag` TINYINT DEFAULT 0 NOT NULL COMMENT 'normal=0, delete=0' AFTER `shop_number`;
+--2018/05/21
+==Moto
+ALTER TABLE `bookings` ADD COLUMN `paying_memo` VARCHAR(255) AFTER `admin_memo`
+==me
+DROP TABLE IF EXISTS `bookings_price`;
+
+CREATE TABLE `bookings_price` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `book_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `type` enum('add','extend') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `insurance1` int(10) unsigned NOT NULL DEFAULT 0,
+  `insurance2` int(10) NOT NULL DEFAULT 0,
+  `paid_options` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paid_options_number` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paid_options_price` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adjustment_price` int(10) NOT NULL DEFAULT 0,
+  `pay_method` tinyint(2) DEFAULT NULL,
+  `pay_status` tinyint(2) unsigned NOT NULL DEFAULT 0,
+  `extend_day` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `extend_return_date` datetime DEFAULT NULL,
+  `extend_basic_price` int(10) unsigned NOT NULL DEFAULT 0,
+  `extend_insurance1` int(10) unsigned NOT NULL DEFAULT 0,
+  `extend_insurance2` int(10) unsigned NOT NULL DEFAULT 0,
+  `extend_options_id` varchar(255) DEFAULT NULL,
+  `extend_options_number` varchar(255) DEFAULT NULL,
+  `extend_options_price` varchar(255) DEFAULT NULL,
+  `extend_option_price` int(10) unsigned NOT NULL DEFAULT 0,
+  `extend_payment` int(10) unsigned NOT NULL DEFAULT 0,
+  `total_price` int(10) unsigned NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+); 
+==Moto
+CREATE TABLE Pages(id int UNSIGNED AUTO_INCREMENT,title varchar(255),slug varchar(255),page_content text,meta_description text,og_tags text,featured_image varchar(255),created_at timestamp,updated_at timestamp,primary key(id));
+ALTER TABLE Pages RENAME pages
+--2018/05/23
+==me
+ALTER TABLE `bookings_price` CHANGE `total_price` `total_price` INT(10) DEFAULT 0 NOT NULL; 
+--2018/05/25
+==me
+ALTER TABLE `bookings` ADD COLUMN `returning_updated` DATETIME DEFAULT '0000-01-01' NULL AFTER `returning`; 
+==mariko
+ALTER TABLE pages ADD meta_only tinyint(4) NOT NULL DEFAULT 0 AFTER og_tags;
+ALTER TABLE pages ADD meta_keywords varchar(255) NOT NULL AFTER og_tags;
+--2018/06/01
+==me
+ALTER TABLE `bookings` ADD COLUMN `etc_card` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `insurance2`; 
+ALTER TABLE `bookings_price` ADD COLUMN `etc_card` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `insurance2`;
+ALTER TABLE `bookings` ADD COLUMN `free_options_category` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `free_options`; 
+--2018/06/02
+==sin
+ALTER TABLE `car_shop` ADD COLUMN `region_code` VARCHAR(30) NOT NULL AFTER `abbriviation`; 
+UPDATE `car_shop` SET `region_code` = 'Fukuoka' WHERE `id` = '4'; 
+UPDATE `car_shop` SET `region_code` = 'Okinawa' WHERE `id` = '5';
+==blue
+ALTER TABLE `bookings` ADD COLUMN `cancel_percent` TINYINT(3) UNSIGNED DEFAULT 0 NOT NULL AFTER `extend_pay_method`, ADD COLUMN `cancel_fee` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `cancel_percent`, ADD COLUMN `cancel_status` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL AFTER `cancel_fee`, ADD COLUMN `cancel_date` DATETIME NULL AFTER `cancel_status`; 
+--2018/06/04
+==blue
+ALTER TABLE `bookings` ADD COLUMN `cancel_total` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `extend_pay_method`; 
+ALTER TABLE `car_passenger_tags` ADD COLUMN `show_order` TINYINT(3) NULL AFTER `max_passenger`; 
+==sin
+ALTER TABLE `car_inventory` ADD COLUMN `max_passenger` TINYINT(2) NULL AFTER `smoke`; 
+--2018/06/11
+==blue
+ALTER TABLE `bookings` ADD COLUMN `virtual_payment` INT(10) DEFAULT 0 NOT NULL AFTER `payment`; 
+==sin
+ALTER TABLE `bookings` ADD COLUMN `flight_inform` VARCHAR(128) NULL AFTER `flight_number`;
+==blue
+ALTER TABLE `bookings_price` ADD COLUMN `price_type` TINYINT(2) UNSIGNED DEFAULT 1 NOT NULL COMMENT '1=departure, 2=return' AFTER `total_price`; 
+--2018/06/21
+ALTER TABLE `bookings` CHANGE `cancel_total` `cancel_total` INT(10) DEFAULT 0 NOT NULL; 
+==Jin
+ALTER TABLE `bookings_price` ADD COLUMN `paid_date` DATETIME NULL AFTER `price_type`; 
+ALTER TABLE `bookings` ADD COLUMN `paid_date` DATETIME NULL AFTER `created_at`; 
+==blue
+ALTER TABLE `bookings` ADD COLUMN `cancel_basic` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `extend_pay_method`; 
+ALTER TABLE `bookings_price` ADD COLUMN `option_price` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `paid_options_price`; 
+ALTER TABLE `bookings` ADD COLUMN `previous_miles` INT(10) UNSIGNED DEFAULT 0 NOT NULL AFTER `miles`; 
+CREATE TABLE `tag_list` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `abbriviation` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` int(3) unsigned NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+);
+--2018/07/11
+ALTER TABLE `car_shop` ADD COLUMN `name_en` VARCHAR(30) NULL AFTER `name`; 
+--2018/07/13
+ALTER TABLE `blog_posts` ADD COLUMN `title_en` VARCHAR(255) DEFAULT 'title' NOT NULL AFTER `title`; 
+ALTER TABLE `post_tags` ADD COLUMN `title_en` VARCHAR(255) DEFAULT 'title' NOT NULL AFTER `title`; 
+ALTER TABLE `car_model` ADD COLUMN `name_en` VARCHAR(50) DEFAULT 'model' NOT NULL AFTER `name`; 
+ALTER TABLE `car_option` ADD COLUMN `name_en` VARCHAR(50) DEFAULT 'option' NOT NULL AFTER `name`; 
+ALTER TABLE `car_shop` ADD COLUMN `thumb_path_en` VARCHAR(255) NULL AFTER `thumb_path`; 
+CREATE TABLE `server_name`( `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), PRIMARY KEY (`id`) ); 
+ALTER TABLE `car_shop` ADD COLUMN `postal_en` VARCHAR(20) NULL AFTER `postal`, ADD COLUMN `prefecture_en` VARCHAR(100) NULL AFTER `prefecture`, ADD COLUMN `city_en` VARCHAR(50) NULL AFTER `city`, ADD COLUMN `address1_en` VARCHAR(255) NULL AFTER `address1`, ADD COLUMN `address2_en` VARCHAR(255) NULL AFTER `address2`, ADD COLUMN `comment_en` TEXT NULL AFTER `comment`; 
+ALTER TABLE `car_class` ADD COLUMN `thumb_path_en` VARCHAR(255) NULL AFTER `thumb_path`; 
+ALTER TABLE `car_pickup` ADD COLUMN `content1_en` TEXT NULL AFTER `content1`; 
+ALTER TABLE `car_passenger_tags` ADD COLUMN `name_en` VARCHAR(20) DEFAULT '1 seat' NOT NULL AFTER `name`; 
+ALTER TABLE `bookings` ADD COLUMN `language` VARCHAR(10) DEFAULT 'ja' NULL AFTER `portal_flag`; 
+ALTER TABLE `car_type_category` ADD COLUMN `name_en` VARCHAR(50) NULL AFTER `name`; 
+ALTER TABLE `bookings` ADD COLUMN `depart_task_date` DATETIME DEFAULT '0000-01-01 00:00:00' NULL AFTER `depart_task`, ADD COLUMN `return_task_date` DATETIME DEFAULT '0000-01-01 00:00:00' NULL AFTER `return_task`; 
+ALTER TABLE `pages` ADD COLUMN `title_en` VARCHAR(255) NULL AFTER `title`, ADD COLUMN `meta_description_en` TEXT NULL AFTER `meta_description`, ADD COLUMN `meta_keywords_en` VARCHAR(255) NULL AFTER `meta_keywords`, ADD COLUMN `featured_image_en` VARCHAR(255) NULL AFTER `featured_image`; 
+--2018/08/11
+ALTER TABLE `users` ADD COLUMN `signin_ip` VARCHAR(45) NULL AFTER `signup_ip_address`; 
+--2018/08/13
+ALTER TABLE `portal_site` ADD COLUMN `portal_flag` TINYINT(2) DEFAULT 1 NULL AFTER `show_flag`; 
+--2018/08/31
+ALTER TABLE `car_shop` CHANGE `region_code` `region_code` VARCHAR(30) CHARSET utf8 COLLATE utf8_unicode_ci DEFAULT 'region code' NOT NULL; 

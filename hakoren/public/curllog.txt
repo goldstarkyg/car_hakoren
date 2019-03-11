@@ -1,0 +1,22 @@
+* Hostname in DNS cache was stale, zapped
+*   Trying ::1...
+* Connected to localhost (::1) port 80 (#0)
+> POST /googleprocess.php HTTP/1.1
+Host: localhost
+Accept: */*
+Content-Length: 9
+Content-Type: application/x-www-form-urlencoded
+
+* upload completely sent off: 9 out of 9 bytes
+< HTTP/1.1 200 OK
+< Date: Thu, 04 Oct 2018 09:11:09 GMT
+< Server: Apache/2.4.17 (Win32) OpenSSL/1.0.2d PHP/5.6.15
+< X-Powered-By: PHP/5.6.15
+< Set-Cookie: PHPSESSID=dnm4dce8g56ts66efc48m459v4; path=/
+< Expires: Thu, 19 Nov 1981 08:52:00 GMT
+< Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+< Pragma: no-cache
+< Content-Length: 2589
+< Content-Type: text/html; charset=UTF-8
+< 
+* Connection #0 to host localhost left intact

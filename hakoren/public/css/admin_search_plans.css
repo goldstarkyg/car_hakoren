@@ -1,0 +1,171 @@
+@charset "utf-8";
+.relative{ position:relative;}
+.search-panel{
+    background: #fefcd6 !important;
+    border:1px solid #d61412 !important;
+    /*margin-top: -1.5em;*/
+}
+.search_head {
+    background-color: #c8c8c8;
+    text-align: center;
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+.row-bordered {
+    border-bottom: 1px solid #e3e3e3;
+    margin-top: 5px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 5px;
+}
+.row-bordered-0 {
+    margin-top: 5px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 5px;
+}
+.search_btn{
+    background-color: #b93f3e;
+    width: 120px;
+    padding: 5px 7px 5px 7px;
+    font-size: 12px;
+    font-weight: 300;
+    border-radius: 2px !important;
+    margin-right: 7px;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #7f1f1e;
+}
+.search_btn i {
+    color: #7a1c1b;
+    font-size: 14px;
+    padding-right: 3px;
+}
+.search_cartype{
+    background-color: #dddddd;
+    width: 120px;
+    padding: 5px 7px 5px 7px;
+    font-size: 12px;
+    font-weight: 300;
+    border-radius: 2px !important;
+    margin-right: 7px;
+    color: #2c2c2c;
+    cursor: pointer;
+    border: 1px solid #c2c2c2;
+}
+.search_cartype i{
+    color: #797979;font-size: 14px;padding-right: 3px;
+}
+.search_cartype:hover{
+    background: #b7b7b7;
+}
+.search_shop{
+    color: #00a2ff;
+    margin-top: 5px;
+}
+.search_option{
+    padding-left: 30px !important;
+    margin-top: 7px !important;
+}
+.search_option>span{
+    margin-left:-5px !important;
+}
+.bg-grad-red{
+    background: -moz-linear-gradient(top, #ff0000 1%, #dd0000 50%, #dd0000 50%, #880000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ff0000 1%,#dd0000 50%,#dd0000 50%,#880000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ff0000 1%,#dd0000 50%,#dd0000 50%,#880000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: #ffffff;
+}
+.bg-grad-gray{
+    background: -moz-linear-gradient(top, #fff 1%, #eee 50%, #eee 50%, #ddd 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #fff 1%,#eee 50%,#eee 50%,#ddd 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #fff 1%,#eee 50%,#eee 50%,#ddd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.car_title {
+    text-align: left;
+    font-size: 2em;
+    font-weight: bold;
+}
+.search-result-panel{
+    border: 1px solid rgba(0, 0, 0, 0.2) ;
+    border-top: 0.5em solid #b93332;
+}
+.result_shop{
+    background-color: #fee8ea;
+    padding: 0.6em;
+    font-size: 12px;
+    font-weight: 300;
+    border-left: 7px solid #b69697;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.19);
+}
+/*bubble*/
+.bubble-wrap {
+    width: 120px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 16px 0 rgba(0, 0, 0, 0.19);
+}
+
+.bubble_write{
+    font-size: 23px; font-weight:400; color:#b51b1b;
+}
+
+.bubble {
+    position: relative;
+    padding: 10px;
+    background: #feaead;
+    border-radius: 4px;
+    border: #e99f9e solid 1px;
+    font-size: 1em;
+    line-height: 1.25em;
+    text-align: center;
+    /*height:50px;*/
+    vertical-align: middle;
+}
+
+.bubble.left:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 8px 8px 8px 0;
+    border-color: transparent #feaead;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -8px;
+    top: 50%;
+    margin-top: -9px;
+}
+
+.bubble.left:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 9px 9px 9px 0;
+    border-color: transparent #e99f9e;
+    display: block;
+    width: 0;
+    z-index: 0;
+    left: -9px;
+    top: 50%;
+    margin-top: -10px;
+}
+.row-bordered-result {
+    border-bottom: 1px dashed #e3e3e3;
+    margin-top: 1px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 1px;
+}
+
+.form-group .control-label{padding:5px; text-align:right;}
+table.table-searchplan > tbody > tr > td,table.table-searchplan > tbody > tr > td{padding:4px; /*font-size:0.8em !important;*/ text-align:center;vertical-align: middle;}
+table.table-searchplan .btn-primary{ padding:4px 8px;}
+.form-group {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.carclass_cate{display:none;}
+.carclass_cate.show{display:block;}
+.carclass_cate label span{margin-left:-5px;}
+.carclass_cate label {padding-left: 30px !important;
+    margin-top: 7px !important;}
+.form-horizontal .checkbox{padding-top:0;}

@@ -1,0 +1,6 @@
+.panel-login{margin-top:10vh;}
+.panel-login .panel-default{padding-top:20px;
+    box-shadow: 12px 12px 18px -4px rgba(0,0,0,0.2); border-top:0; border-left:0;border-radius: 7px!important;
+-webkit-border-radius: 7px!important; 
+-moz-border-radius: 7px!important;}
+a.btn-link{color:#337ab7;}

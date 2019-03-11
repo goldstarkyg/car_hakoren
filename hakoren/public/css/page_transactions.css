@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+/*** page css  ***/
+
+.breadcrumb-item { cursor: pointer; color: #000; }
+.breadcrumb-item.active  { color: rgba(6, 17, 179, 0.78); }
+
+.bg-blu{ padding:2em;}
+.white-box{ background:#F9FEFE;padding:15px; margin-bottom:20px;}
+.white-box h4{    font-size: 1.4em;
+    font-weight: 600;}
+.p15{padding:15px;}
+.relative{position:relative;}
+.bg-blu.p_T30{padding-top:30px!important;}
+
+.transaction h3{font-size:1.8rem; margin-top:30px;}
+.transaction ul{list-style:disc; margin-left:30px;}
+.transaction ul li{margin-bottom:10px;}
+@media screen and (max-width: 768px){
+.transaction ul{margin-left:19px;}
+.page-content .box-shadow{ padding:10px;}
+}

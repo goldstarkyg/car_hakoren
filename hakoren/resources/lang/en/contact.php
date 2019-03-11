@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'contactus'     => 'Contact Us',
+    'variousinquiry'=> 'Contact Us',
+    'preparing'     => 'Please check "FAQ" before contacting us.<br>',
+    'faq'           => 'FAQ',
+    'inquiry'       => 'Inquiries by phone',
+    'fuku'          => 'Fukuoka Airport shop',
+    'businesstime'  => 'business hours',
+    'week'          => '7 days a week',
+    'okina'         => 'Naha Airport shop',
+    'inquiryform'   => 'Inquiry form',
+    'name'          => 'Name',
+    'hakoname'      => 'Example) Hako Rentaro',
+    'mail'          => 'Mail Address',
+    'ex'            => 'Example)',
+    'use'           => 'Use (planned) store',
+    'contentinquiry'=> 'Inquiry Contents',
+    'send'          => 'Send',
+    'toppage'       => 'Top of page',
+    'mebership'     => 'You must agree to the membership agreement.',
+    'entername'     => 'Please enter your name.',
+    'confirm'     => 'Submit Form',
+    'confirmtext'     => 'I agree to send inqury with above content.',
+];

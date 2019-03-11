@@ -1,0 +1,37 @@
+<?php
+return [
+    'faq'       => 'Frequently Asked Questions',
+    'about'     => 'Rental fees',
+    'insurance' => 'Insurance / Compensation',
+    'vehicle'   => 'Car models / extras',
+    'license'   => 'Driver’s license and qualification',
+    'reservation'=>'Car reservation',
+    'delivery'  => 'Pick-ups / Drop-offs',
+    'aboutus'   => 'During use',
+    'membership'=> 'About membership system',
+    'other'     => 'Others',
+    'no-smoking'    => 'Do you have any non-smoking cars?',
+    'no-smoking-a'   => 'We do have non-smoking cars, please request your preference at the time of reservation.',
+    'manual'    => 'Do you have any manual transmission vehicles?',
+    'microbus'   => 'We have manual transmission for Micro Bus only. All other cars are equipped with automatic transmission.',
+    'babyseat'       => 'Can I rent items such as baby seat, child seat, and junior seat?',
+    'rental'=> 'Yes we provide baby seat, child seat, junior seat for paid options, or you can bring your own.<br>
+* Please note that we do not support attaching the seat, please make sure that the seat is tightly attached to the car seat.',
+    'etc'     => 'Is my car equipped with the ETC in-vehicle unit?',
+    'etc-a'      => 'All vehicles are equipped with the ETC card system, please request for the rental if necessary.',
+    'etccard'    => 'Can I rent an ETC card?',
+    'etccard-a'   => 'We have ETC card rentals, please request upon reservation.',
+    'grade'  => 'Can I choose a car grade and its colors?',
+    'grade-a'   => 'Unfortunately, we do not take car grade/color requests.',
+    'ipod'   => 'Does a car comes with USB connector that I can use for my iPod?',
+    'ipod-a'=> 'Some cars have a USB connector. Please check the information for the equipment when you make your reservation.',
+    'wintertire'      => 'How can I rent winter tires or snow chains?',
+    'wintertire-a'     => 'Winter tires are available for online reservation during the winter season.<br>For details, please contact the HAKOrentacar shop.<br>*Please note that some cars/shop may not able to provide the item.',
+	'shop-fukuoka'    => 'Fukuoka Airport Shop',
+    'shop-okinawa'     => 'Okinawa Naha Airport Shop',
+    'carnavigation'     => 'Is my car equipped with a car navigation system (GPS)?',
+    'carnavigation-a'    => 'All cars are equipped with GPS.',
+    'toppage'   => 'Top of page',
+    
+];
+

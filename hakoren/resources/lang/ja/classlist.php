@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'classlist'     => '車両クラス一覧',
+    'carfee'        => 'レンタカー料金別車両クラス',
+    'modelimage'    => '代表車種イメージ図',
+    'passenger'     => '乗車人数',
+    'name'          => '名',
+    'modelname'     => ' 対応車種',
+    'option'        => '対応オプション',
+    'onedayprice'   => '1日料金',
+    '1n2dtime'      => '1泊2日の時',
+    'yen'           => '円',
+    'day'           => '日',
+    'tax'           => '税込/通常料金',
+    '1n2d'          => '1泊2日',
+    'viewdetail'    => 'クラス詳細・料金を見る',
+    'coaster'       => 'コースター 、 リエッセ',
+    'optionlist'    => 'ベビーシート 、 ジュニアシート 、 チャイルドシート 、 空港送迎 、 ETCカード',
+    'price'         => '料金',
+    'rental'        => 'このクラスのレンタルは',
+    'inquire'       => 'までお問合せ下さい。',
+    'inqu'          => 'お問合せ',
+    'carlexus'      => 'レクサス LS460 前期',
+    'lexusdesc1'     => '高級感のあるレクサスです。',
+    'carlexus1'     => 'レクサス LS460 後期',
+    'toppage'       => 'ページトップへ',
+    'notfound'      => 'レコードが見つかりません',
+
+];

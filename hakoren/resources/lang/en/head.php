@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'about'         => 'What is a laboratory',
+    'createuser'    => 'New member registration',
+    'memberlogin'    => 'Member login',
+    'police'        => 'privacy protection',
+    'term'          => 'terms of service',
+    'faq'           => 'Various inquiries',
+    'withdrawel'    => 'About withdrawal',
+    'copyright'     => 'Copyright',
+    'reserved'      => 'KAKETSUKEN All Rights Reserved.',
+    'home'          => 'Home',
+    'typeprice'     => 'Type-Price',
+    'shoppickup'   =>  'Shop-Pickup',
+    'faq'           => 'FAQ',
+    'beginner'      => 'Beginner',
+    'carsearch'     => 'Car-Search',
+    'travelinformation'   => 'Travel Information',
+    'myaccount'     => 'My account',
+    'contactus'     => 'Contact us',
+    'business'      => '',
+    'logalt'        => 'Cheapest car rental at Fukuoka & Okinawa!! 5-10 passenger car available at best rate',
+    'fukurentprice' => 'Fukuoka Car & Price',
+    'okinarentprice' => 'Okinawa Car & Price',
+    'firsttimeuser' => 'First time user',
+    'findyourcar'   => 'Find your car',
+    'fukuokasales'  => 'Super Sale Fukuoka',
+    'okinawasales'  => 'Super Sale Okinawa',
+
+];

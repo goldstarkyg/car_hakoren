@@ -1,0 +1,4 @@
+[2018-09-26 16:46:14] local.INFO: User Logged Out.  
+Log Entry Details:
+["[object] (App\\Models\\User: {\"id\":1,\"name\":\"Superadmin\",\"first_name\":\"SA\",\"last_name\":\"モトクル\",\"email\":\"admin1@motocle.com\",\"signup_ip_address\":null,\"signin_ip\":\"153.184.106.74\",\"signup_confirmation_ip_address\":\"134.238.210.165\",\"signup_sm_ip_address\":null,\"updated_ip_address\":null,\"deleted_ip_address\":null,\"admin_ip_address\":\"56.249.247.245\",\"password_updated\":0,\"created_at\":\"2018-01-03 01:34:19\",\"updated_at\":\"2018-05-21 18:19:09\",\"deleted_at\":null})"]
+[]

@@ -1,0 +1,125 @@
+/* Define how SqPaymentForm iframes should look */
+.sq-input {
+  /*border: 1px solid rgb(223, 223, 223);*/
+  outline-offset: -2px;
+  margin-bottom: 2px;
+  display: inline-block;
+  height:28px;
+  background:#fff;
+  padding:5px;
+  
+}
+
+#sq-expiration-date{
+  width:80px !important;
+}
+
+#sq-cvv{
+  width:80px !important;
+}
+
+/* Define how SqPaymentForm iframes should look when they have focus */
+.sq-input--focus {
+  outline: 2px auto rgb(59, 153, 252);
+}
+
+/* Define how SqPaymentForm iframes should look when they contain invalid values */
+.sq-input--error {
+  outline: 2px auto rgb(255, 97, 97);
+}
+
+/* Customize the "Pay with Credit Card" button */
+.button-credit-card {
+/*  min-width: 200px;
+  min-height: 20px;
+  padding: 0;
+  margin: 2px;
+  line-height: 20px;
+  box-shadow: 2px 2px 1px rgb(200, 200, 200);
+  background: rgb(255, 255, 255);
+  background:#8EC11E;
+  border-radius: 2px;
+  border: 1px solid rgb(200, 200, 200);
+  font-weight: bold;
+  cursor:pointer;*/
+  box-shadow:none;
+  margin-top: 30px;   
+  background:#8EC11E;
+  color:#fff;
+  cursor:pointer;
+  height:40px;
+  margin-bottom:5px;
+  border:none;  
+  padding:4px 25px;
+  
+}
+
+
+/* Customize the "{{Wallet}} not enabled" message */
+.wallet-not-enabled {
+  min-width: 200px;
+  min-height: 40px;
+  max-height: 64px;
+  padding: 0;
+  margin: 10px;
+  line-height: 40px;
+  background: #eee;
+  border-radius: 5px;
+  font-weight: lighter;
+  font-style: italic;
+  font-family: inherit;
+  display: block;
+}
+
+/* Customize the Apple Pay on the Web button */
+.button-apple-pay {
+  min-width: 200px;
+  min-height: 40px;
+  max-height: 64px;
+  padding: 0;
+  margin: 10px;
+  background-image: -webkit-named-image(apple-pay-logo-white);
+  background-color: black;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 5px;
+  cursor:pointer;
+  display: none;
+}
+
+/* Customize the Masterpass button */
+.button-masterpass {
+  min-width: 200px;
+  min-height: 40px;
+  max-height: 40px;
+  padding: 0;
+  margin: 10px;
+  background-image: url(https://static.masterpass.com/dyn/img/btn/global/mp_chk_btn_147x034px.svg);
+  background-color: black;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 2px;
+  border-color: rgb(255, 255, 255);
+  cursor:pointer;
+  display: none;
+}
+
+#sq-walletbox {
+  float:left;
+  margin:2px;
+  padding:10px;
+  text-align: center;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+#sq-ccbox {
+  float:left;
+  margin:2px;
+  padding:10px;
+  text-align: center;
+  vertical-align: top;
+  font-weight: bold;
+}

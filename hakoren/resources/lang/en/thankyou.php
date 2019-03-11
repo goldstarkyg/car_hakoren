@@ -1,0 +1,21 @@
+<?php
+return [
+    'confirm'   => 'Confirm reservation',
+    'thank'     => 'Thank you for your reservation',
+    'confirmcar'=> 'Your car reservation has been confirmed.',
+    'short'     => '<h2> Save <span> 20 </span> minutes on dispatch day. </h2>',
+    'nostart'   => '<h2> Give our <span> Quick </span> Drive-Out a try! </h2>',
+    'gift1'      => 'Complete the following online, and receive a special gift when you arrive!',
+    'driverlicense'=>'Confirmation of driver\'s license',
+    'contract'  => 'Agreement of Contract',
+    'creditcard'=> 'Credit card payment',
+    'extension' => 'Proceed to Quick Drive-Out',
+    'refresh'   => 'To refresh your ride ...',
+    'anytime'   => 'When you want to feel fresh at any time, this is it!',
+    'children'  => 'Adults and children alike ...',
+    'driving'   => 'When you want to keep up the pace of your drive',
+    'gift2'      => 'We will give each passenger a gift to help you enjoy your ride!',
+    'confirmation'=> '※ No additional charges will be incurred. Payment only for car rental fee and driver\'s confirmation.',
+    'customer'  => '※ Customers who have not purchased indemnity compensation, please allow about ten minutes for staff to inspect the vehicle before use.',
+    'toppage'   => 'Top of page',
+];

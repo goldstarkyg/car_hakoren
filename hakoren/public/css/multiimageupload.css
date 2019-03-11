@@ -1,0 +1,62 @@
+@import "http://fonts.googleapis.com/css?family=Droid+Sans";
+
+h2{
+    margin-left:30px
+}
+#filediv {
+ margin-bottom: 2px;
+}
+.upload{
+    background-color:red;
+    border:1px solid red;
+    color:#fff;
+    border-radius:5px;
+    padding:10px;
+    text-shadow:1px 1px 0 green;
+    box-shadow:2px 2px 15px rgba(0,0,0,.75)
+}
+.upload:hover{
+    cursor:pointer;
+    background:#c20b0b;
+    border:1px solid #c20b0b;
+    box-shadow:0 0 5px rgba(0,0,0,.75)
+}
+#file{
+    color:green;
+    padding:5px;
+    border:1px dashed #123456;
+    background-color:#f9ffe5
+}
+#upload{
+    margin-left:45px
+}
+#noerror{
+    color:green;
+    text-align:left
+}
+#error{
+    color:red;
+    text-align:left
+}
+#img{
+    width:27px;
+    border:none;
+    height:27px;
+    margin-left:-20px;
+    margin-bottom:81px
+}
+.abcd{
+    /*text-align:center*/
+}
+.abcd img{
+    height:100px;
+    width:auto;
+    padding:5px;
+    border:1px solid #adacab
+}
+b{
+    color:red
+}
+#add_more{
+    margin-top: 5px;
+}

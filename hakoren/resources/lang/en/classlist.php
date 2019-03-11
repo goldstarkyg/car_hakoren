@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'classlist'         => 'Car class list',
+    'carfee'            => 'Car class by rent-a-car fee',
+    'modelimage'        => 'Model images',
+    'passenger'         => 'Passenger',
+    'name'              => '',
+    'modelname'         => 'Model name',
+    'option'            => 'Option',
+    'onedayprice'       => 'Day price',
+    '1n2dtime'          => 'One night 2 days time',
+    'yen'               => '¥',
+    'day'           => 'day',
+    'tax'           => 'Tax included / regular charge',
+    '1n2d'          => '1Night 2Day',
+    'viewdetail'    => 'View detail',
+    'coaster'       => 'Coaster, Riese',
+    'optionlist'    => 'Baby seat, junior seat, child seat, airport transfer, ETC card',
+    'price'         => 'Price',
+    'rental'        => 'Rental of this class is',
+    'inquire'       => 'Please inquire.',
+    'inqu'          => 'Inquire',
+    'carlexus'      => 'Lexus LS 460 Early period',
+    'lexusdesc1'     => 'It is a classy Lexus',
+    'carlexus1'     => 'Lexus LS 460 latter term',
+    'toppage'       => 'Top of page',
+    'notfound'      => 'Record not found',
+
+];

@@ -1,0 +1,31 @@
+<?php
+return [
+    'faq'       => 'Frequently Asked Questions',
+    'about'     => 'Rental fees',
+    'insurance' => 'Insurance / Compensation',
+    'vehicle'   => 'Car models / extras',
+    'license'   => 'Driver’s license and qualification',
+    'reservation'=>'Car reservation',
+    'delivery'  => 'Pick-ups / Drop-offs',
+    'aboutus'   => 'During use',
+    'membership'=> 'About membership system',
+    'other'     => 'Others',
+    'hakorentcar'    => 'About us',
+    'hakorentcar-a'   => 'Please visit the following page for more information about Specified Commercial Transactions Law. ( Japanese language only)',
+    'transactions'    => 'Specified Commercial Transactions Law',
+    'guide'   => '',
+    'first'       => '',
+	'inquiry'       => 'How to contact us',
+	'shop-fukuoka'    => 'Fukuoka Airport Shop',
+    'shop-okinawa'     => 'Okinawa Naha Airport Shop',
+	'contacttext'      => 'Please use the ',
+    'contactform'      => 'contact form',
+    'shoptel'    => 'or call us: <br>Fukuoka Airport Shop  +81 (0)92-260-9506<br>Okinawa Airport Shop +81 (0)98-851-4291
+',
+    'policy'   => 'About disclosure of personal information',
+    'policy-a'  => 'Please visit the following page for more information about ',
+	'policy-page'  => 'Privacy Policy.',
+	'policy-b'  => ' ( Japanese language only)',
+    'toppage'   => 'Top of page',
+];
+
